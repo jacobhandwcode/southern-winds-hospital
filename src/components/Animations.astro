@@ -1,0 +1,192 @@
+---
+
+---
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReduced) {
+    gsap.set([
+      ".hero__badge",
+      ".hero__heading",
+      ".hero__text",
+      ".hero__actions",
+      ".hero__trust",
+      ".hero__visual",
+      ".hero__stat"
+    ], {
+      opacity: 0,
+    });
+
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    heroTl
+      .fromTo(".hero__badge",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5 }
+      )
+      .fromTo(".hero__heading",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6 },
+        "-=0.3"
+      )
+      .fromTo(".hero__text",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5 },
+        "-=0.3"
+      )
+      .fromTo(".hero__actions",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5 },
+        "-=0.2"
+      )
+      .fromTo(".hero__trust",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4 },
+        "-=0.2"
+      )
+      .fromTo(".hero__visual",
+        { opacity: 0, x: 40, scale: 0.97 },
+        { opacity: 1, x: 0, scale: 1, duration: 0.8 },
+        "-=0.6"
+      )
+      .fromTo(".hero__stat",
+        { opacity: 0, scale: 0.8, y: 10 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" },
+        "-=0.3"
+      );
+
+    const statNumber = document.querySelector(".hero__stat-number");
+    if (statNumber) {
+      const target = parseInt(statNumber.textContent || "30", 10);
+      gsap.fromTo(
+        { val: 0 },
+        { val: target, duration: 1.5, ease: "power2.out", delay: 0.8,
+          onUpdate: function () {
+            statNumber.textContent = Math.floor(this.targets()[0].val) + "+";
+          }
+        }
+      );
+    }
+
+    gsap.to(".hero__image-wrapper", {
+      yPercent: -4,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.5,
+      },
+    });
+
+    gsap.to(".hero__bg-shape", {
+      xPercent: 3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.8,
+      },
+    });
+
+    const revealElements = gsap.utils.toArray([
+      ".values__card",
+      ".programs__header",
+      ".programs__card",
+      ".insurance__label",
+      ".insurance__heading",
+      ".insurance__carousel",
+      ".insurance__note",
+      ".footer-cta__content",
+      ".footer-cta__actions",
+    ]);
+
+    revealElements.forEach((el, i) => {
+      const isCard = el.classList.contains("values__card") || el.classList.contains("programs__card");
+      const siblings = isCard
+        ? Array.from(el.parentElement.children)
+        : null;
+      const staggerDelay = siblings ? siblings.indexOf(el) * 0.1 : 0;
+
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: staggerDelay,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".programs__card").forEach((card) => {
+      const img = card.querySelector(".programs__card-image img");
+      if (img) {
+        gsap.to(img, {
+          yPercent: -6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.4,
+          },
+        });
+      }
+    });
+
+    document.querySelectorAll(".values__card").forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card.querySelector(".values__icon"), {
+          scale: 1.1,
+          rotation: 5,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card.querySelector(".values__icon"), {
+          scale: 1,
+          rotation: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    });
+
+    document.querySelectorAll(".programs__card-link").forEach((link) => {
+      const arrow = link.querySelector("svg");
+      if (arrow) {
+        link.addEventListener("mouseenter", () => {
+          gsap.to(arrow, { x: 6, duration: 0.25, ease: "power2.out" });
+        });
+        link.addEventListener("mouseleave", () => {
+          gsap.to(arrow, { x: 0, duration: 0.25, ease: "power2.out" });
+        });
+      }
+    });
+
+    document.querySelectorAll(".hero__cta-primary, .hero__cta-secondary, .footer-cta__phone, .footer-cta__btn").forEach((btn) => {
+      btn.addEventListener("mouseenter", () => {
+        gsap.to(btn, { y: -2, duration: 0.2, ease: "power2.out" });
+      });
+      btn.addEventListener("mouseleave", () => {
+        gsap.to(btn, { y: 0, duration: 0.2, ease: "power2.out" });
+      });
+    });
+  }
+</script>
