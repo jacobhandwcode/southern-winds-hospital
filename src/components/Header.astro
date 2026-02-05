@@ -1,0 +1,289 @@
+---
+
+---
+
+<header class="site-header">
+  <div class="utility-bar">
+    <div class="utility-bar__inner">
+      <p class="utility-bar__message">
+        Compassionate Mental Health Care — Call Us Now:
+        <a href="tel:7868267552" class="utility-bar__phone">786-826-7552</a>
+      </p>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Southern Winds Hospital — Home">
+        <img src="/images/logo.svg" style="width: 100px" />
+      </a>
+
+      <button
+        class="nav__toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list" role="list">
+          <li class="nav__item">
+            <a href="/" class="nav__link" aria-current="page">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="/about" class="nav__link">About Us</a>
+          </li>
+          <li class="nav__item">
+            <a href="/programs" class="nav__link">Programs</a>
+          </li>
+          <li class="nav__item">
+            <a href="/admissions" class="nav__link">Admissions</a>
+          </li>
+          <li class="nav__item">
+            <a href="/what-we-treat" class="nav__link">What We Treat</a>
+          </li>
+          <li class="nav__item">
+            <a href="/insurance" class="nav__link">Insurance</a>
+          </li>
+          <li class="nav__item">
+            <a href="/careers" class="nav__link">Careers</a>
+          </li>
+        </ul>
+        <a href="/contact" class="nav__cta">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style lang="scss">
+  @use '../styles/partials/variables' as *;
+  @use '../styles/partials/mixins' as *;
+
+  .utility-bar {
+    background-color: $color-navy;
+    padding: $space-sm 0;
+
+    &__inner {
+      @include container;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__message {
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 500;
+      color: rgba($color-white, 0.85);
+      letter-spacing: 0.03em;
+
+      @include respond(md) {
+        font-size: $fs-sm;
+      }
+    }
+
+    &__phone {
+      color: $color-white;
+      font-weight: 700;
+      margin-left: $space-xs;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-accent;
+      }
+    }
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-border;
+    transition: box-shadow $transition-base;
+
+    &.is-scrolled {
+      box-shadow: $shadow-md;
+    }
+
+    &__inner {
+      @include container;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+
+      @include respond(lg) {
+        height: 80px;
+      }
+    }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    &__logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+      color: $color-white;
+      font-family: $font-heading;
+      font-size: $fs-lg;
+      font-weight: 700;
+      border-radius: $radius-md;
+      letter-spacing: -0.02em;
+    }
+
+    &__logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    &__logo-name {
+      font-family: $font-heading;
+      font-size: $fs-md;
+      font-weight: 700;
+      color: $color-navy;
+
+      @include respond(md) {
+        font-size: $fs-lg;
+      }
+    }
+
+    &__logo-tagline {
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 500;
+      color: $color-primary;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    &__toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+
+      @include respond(lg) {
+        display: none;
+      }
+    }
+
+    &__toggle-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $color-navy;
+      border-radius: 2px;
+      transition: all $transition-base;
+    }
+
+    &__menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: $color-white;
+      border-bottom: 1px solid $color-border;
+      padding: $space-lg;
+      box-shadow: $shadow-lg;
+
+      &.is-open {
+        display: block;
+      }
+
+      @include respond(lg) {
+        display: flex;
+        position: static;
+        align-items: center;
+        gap: $space-sm;
+        background: none;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: $space-xs;
+
+      @include respond(lg) {
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+      }
+    }
+
+    &__link {
+      display: block;
+      padding: $space-sm $space-md;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      font-weight: 500;
+      color: $color-gray-700;
+      letter-spacing: 0.01em;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+
+      &:hover,
+      &[aria-current="page"] {
+        color: $color-primary;
+        background-color: rgba($color-primary, 0.05);
+      }
+
+      &[aria-current="page"] {
+        font-weight: 600;
+      }
+    }
+
+    &__cta {
+      @include btn-primary;
+      margin-top: $space-md;
+      justify-content: center;
+
+      @include respond(lg) {
+        margin-top: 0;
+        margin-left: $space-md;
+      }
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.querySelector('.nav__menu');
+  const nav = document.querySelector('.nav');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('is-open');
+    });
+  }
+
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 10);
+    }, { passive: true });
+  }
+</script>
