@@ -197,18 +197,18 @@ import Layout from '../layouts/Layout.astro';
       @include container;
       display: grid;
       grid-template-columns: 1fr;
-      gap: $space-xl;
-      padding-top: $space-2xl;
-      padding-bottom: $space-2xl;
+      gap: $space-lg;
+      padding-top: $space-xl;
+      padding-bottom: $space-xl;
       position: relative;
       z-index: 2;
 
       @include respond(lg) {
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        gap: $space-3xl;
-        padding-top: $space-3xl;
-        padding-bottom: $space-3xl;
+        gap: $space-2xl;
+        padding-top: $space-2xl;
+        padding-bottom: $space-2xl;
       }
     }
 
@@ -243,32 +243,32 @@ import Layout from '../layouts/Layout.astro';
       background-color: rgba($color-primary, 0.08);
       border-radius: $radius-full;
       letter-spacing: 0.03em;
-      margin-bottom: $space-lg;
+      margin-bottom: $space-md;
     }
 
     &__heading {
       @include heading-xl;
-      margin-bottom: $space-lg;
+      margin-bottom: $space-md;
 
       @include respond(lg) {
-        margin-bottom: $space-xl;
+        margin-bottom: $space-lg;
       }
     }
 
     &__text {
       @include body-text;
       max-width: 520px;
-      margin-bottom: $space-xl;
+      margin-bottom: $space-lg;
     }
 
     &__actions {
       display: flex;
       flex-wrap: wrap;
       gap: $space-md;
-      margin-bottom: $space-xl;
+      margin-bottom: $space-lg;
 
       @include respond(lg) {
-        margin-bottom: $space-2xl;
+        margin-bottom: $space-xl;
       }
     }
 
@@ -354,7 +354,7 @@ import Layout from '../layouts/Layout.astro';
       display: flex;
       align-items: center;
       gap: $space-sm;
-      padding: $space-md $space-lg;
+      padding: $space-sm $space-md;
       background-color: $color-white;
       border-radius: $radius-lg;
       box-shadow: $shadow-lg;
@@ -384,10 +384,10 @@ import Layout from '../layouts/Layout.astro';
 
   .values {
     background-color: $color-offwhite;
-    padding-block: $space-3xl;
+    padding-block: $space-2xl;
 
     @include respond(lg) {
-      padding-block: $space-4xl;
+      padding-block: $space-3xl;
     }
 
     &__inner {
@@ -397,17 +397,17 @@ import Layout from '../layouts/Layout.astro';
     &__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: $space-lg;
+      gap: $space-md;
 
       @include respond(md) {
         grid-template-columns: repeat(3, 1fr);
-        gap: $space-xl;
+        gap: $space-lg;
       }
     }
 
     &__card {
       background-color: $color-white;
-      padding: $space-xl;
+      padding: $space-lg;
       border-radius: $radius-lg;
       text-align: center;
       border: 1px solid $color-border;
@@ -429,7 +429,7 @@ import Layout from '../layouts/Layout.astro';
       background: linear-gradient(135deg, rgba($color-primary, 0.08), rgba($color-primary, 0.15));
       border-radius: 50%;
       color: $color-primary;
-      margin-bottom: $space-md;
+      margin-bottom: $space-sm;
     }
 
     &__title {
@@ -437,7 +437,7 @@ import Layout from '../layouts/Layout.astro';
       font-size: $fs-xl;
       font-weight: 700;
       color: $color-navy;
-      margin-bottom: $space-sm;
+      margin-bottom: $space-xs;
     }
 
     &__text {
@@ -449,11 +449,11 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .programs {
-    padding-block: $space-3xl;
+    padding-block: $space-2xl;
     background-color: $color-white;
 
     @include respond(lg) {
-      padding-block: $space-4xl;
+      padding-block: $space-3xl;
     }
 
     &__inner {
@@ -462,10 +462,10 @@ import Layout from '../layouts/Layout.astro';
 
     &__header {
       text-align: center;
-      margin-bottom: $space-2xl;
+      margin-bottom: $space-xl;
 
       @include respond(lg) {
-        margin-bottom: $space-3xl;
+        margin-bottom: $space-2xl;
       }
     }
 
@@ -494,11 +494,11 @@ import Layout from '../layouts/Layout.astro';
     &__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: $space-lg;
+      gap: $space-md;
 
       @include respond(md) {
         grid-template-columns: repeat(3, 1fr);
-        gap: $space-xl;
+        gap: $space-lg;
       }
     }
 
@@ -525,7 +525,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     &__card-body {
-      padding: $space-lg;
+      padding: $space-md;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -544,7 +544,7 @@ import Layout from '../layouts/Layout.astro';
       font-size: $fs-sm;
       line-height: 1.7;
       color: $color-text-muted;
-      margin-bottom: $space-lg;
+      margin-bottom: $space-md;
       flex-grow: 1;
     }
 
@@ -574,11 +574,11 @@ import Layout from '../layouts/Layout.astro';
 
   .insurance {
     background-color: $color-offwhite;
-    padding-block: $space-3xl;
+    padding-block: $space-2xl;
     overflow: hidden;
 
     @include respond(lg) {
-      padding-block: $space-4xl;
+      padding-block: $space-3xl;
     }
 
     &__inner {
@@ -598,7 +598,7 @@ import Layout from '../layouts/Layout.astro';
 
     &__heading {
       @include heading-lg;
-      margin-bottom: $space-2xl;
+      margin-bottom: $space-xl;
       padding-inline: $space-lg;
     }
 
@@ -607,7 +607,7 @@ import Layout from '../layouts/Layout.astro';
       overflow: hidden;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      margin-bottom: $space-xl;
+      margin-bottom: $space-lg;
     }
 
     &__track {
