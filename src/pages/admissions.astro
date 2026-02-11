@@ -1,0 +1,524 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Admissions — Southern Winds Hospital" hideFooterCta>
+
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="/images/admissions-hero.png" alt="" loading="eager" />
+    </div>
+    <div class="page-hero__diagonal"></div>
+    <div class="page-hero__curve"></div>
+    <div class="page-hero__inner">
+      <div class="page-hero__content">
+        <h1 class="page-hero__heading">Admissions</h1>
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span aria-current="page">Admissions</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="intro__inner">
+      <h2 class="intro__heading">Your Path to Recovery Starts Here</h2>
+      <div class="intro__content">
+        <p>We understand the challenges and difficulties you are facing, and we are here to help. At Southern Winds Hospital, our Intake Coordinators and Directors are here to answer all your questions and concerns. We are here to guide you and your family through the admissions process and the treatment options.</p>
+        <p>Please call one of our hospital's 24/7 psychiatric intake coordinators at <a href="tel:7868267552">(786) 826-7552</a>, and we will get you started on the path to recovery.</p>
+        <p>The first step is to recognize that you or a loved one may need help. At Southern Winds Hospital, our Specialists, Psychiatrists, and Dieticians provide a safe place for the body to heal physically and mentally. An Individual evaluation allows our multidisciplinary team to develop a personalized and confidential treatment plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="help-section">
+    <div class="help-section__inner">
+      <h2 class="help-section__heading">We're Here To Help</h2>
+
+      <div class="help-block">
+        <div class="help-block__content">
+          <h3 class="help-block__title">What do we evaluate?</h3>
+          <p class="help-block__text">During the initial evaluation, our team develops a comprehensive patient profile. We determine if you have been previously diagnosed with a disorder, anti-social behavioral issues, or an addiction. We will ask if you (or the patient) have suffered physical or psychological abuse.</p>
+          <p class="help-block__text">The evaluation team also considers family dynamics. In addition, the evaluation includes the patient's medical history, and the medical team provides a comprehensive physical exam to check your health status.</p>
+        </div>
+        <div class="help-block__image">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Medical professional conducting an evaluation" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="help-block help-block--reverse">
+        <div class="help-block__content">
+          <h3 class="help-block__title">What to expect from us?</h3>
+          <p class="help-block__text">Your mental health is our top priority. From the initial contact, we will focus on a personalized plan for your successful recovery. Our multidisciplinary team provides personalized treatment, with ample space and time for patients to express themselves to a confidential source.</p>
+          <p class="help-block__text">This type of approach creates an environment of trust, which allows healing to begin.</p>
+        </div>
+        <div class="help-block__image">
+          <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=600&q=80" alt="Supportive therapy session" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insurance-section">
+    <div class="insurance-section__inner">
+      <div class="insurance-block">
+        <div class="insurance-block__content">
+          <h3 class="insurance-block__title">Health Insurance</h3>
+          <p class="insurance-block__text">Dealing with insurance companies can be frustrating at times. For that reason, Southern Winds Hospital offers a team of in-house insurance specialists.</p>
+          <p class="insurance-block__text">We are dedicated to working with you and helping you understand your options.</p>
+          <a href="/insurance" class="insurance-block__link">
+            View Insurance Information
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="insurance-block__image">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Insurance documentation and support" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-section__inner">
+      <h2 class="cta-section__heading">We're Here To Help</h2>
+      <p class="cta-section__text">Take the first step toward recovery. Our team is available 24/7.</p>
+      <a href="/contact" class="cta-section__btn">Contact Us</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style lang="scss">
+  @use '../styles/partials/variables' as *;
+  @use '../styles/partials/mixins' as *;
+
+  .page-hero {
+    position: relative;
+    min-height: 220px;
+    overflow: hidden;
+
+    @include respond(md) {
+      min-height: 300px;
+    }
+
+    &__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba($color-primary, 0.75);
+      }
+    }
+
+    &__diagonal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+      z-index: 2;
+
+      @include respond(md) {
+        width: 50%;
+        clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+      }
+    }
+
+    &__curve {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: $color-white;
+      z-index: 4;
+clip-path: ellipse(45% 100% at 50% 100%);
+
+      @include respond(md) {
+        height: 70px;
+        clip-path: ellipse(45% 100% at 50% 100%);
+      }
+    }
+
+    &__inner {
+      @include container;
+      padding-block: $space-2xl;
+      position: relative;
+      z-index: 3;
+
+      @include respond(lg) {
+        padding-block: $space-3xl;
+      }
+    }
+
+    &__content {
+      max-width: 400px;
+    }
+
+    &__heading {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-white;
+      margin-bottom: $space-xs;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 48px;
+        height: 3px;
+        background-color: $color-white;
+        margin-top: $space-xs;
+      }
+
+      @include respond(md) {
+        font-size: $fs-3xl;
+      }
+    }
+
+    &__breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: rgba($color-white, 0.85);
+      margin-top: $space-xs;
+
+      a {
+        color: rgba($color-white, 0.85);
+        transition: color $transition-fast;
+
+        &:hover {
+          color: $color-white;
+        }
+      }
+
+      span[aria-current] {
+        color: $color-white;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .intro {
+    background-color: $color-white;
+    padding-block: $space-2xl;
+    padding-top: 0 !important;
+
+    @include respond(lg) {
+      padding-block: $space-3xl;
+    }
+
+    &__inner {
+      @include container;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    &__heading {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-primary;
+      margin-bottom: $space-lg;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: $color-primary;
+        margin: $space-sm auto 0;
+      }
+
+      @include respond(md) {
+        font-size: $fs-3xl;
+      }
+    }
+
+    &__content {
+      p {
+        font-family: $font-body;
+        font-size: $fs-sm;
+        line-height: 1.8;
+        color: $color-text-muted;
+        margin-bottom: $space-md;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        @include respond(md) {
+          font-size: $fs-base;
+        }
+      }
+
+      a {
+        color: $color-primary;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+
+        &:hover {
+          color: $color-primary-dark;
+        }
+      }
+    }
+  }
+
+  .help-section {
+    background-color: $color-primary;
+    padding-block: $space-2xl;
+
+    @include respond(lg) {
+      padding-block: $space-3xl;
+    }
+
+    &__inner {
+      @include container;
+    }
+
+    &__heading {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-white;
+      text-align: center;
+      margin-bottom: $space-2xl;
+
+      @include respond(md) {
+        font-size: $fs-3xl;
+      }
+    }
+  }
+
+  .help-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+    margin-bottom: $space-xl;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include respond(md) {
+      grid-template-columns: 1fr 1fr;
+      gap: $space-2xl;
+      align-items: center;
+    }
+
+    &--reverse {
+      @include respond(md) {
+        .help-block__content {
+          order: 2;
+        }
+        .help-block__image {
+          order: 1;
+        }
+      }
+    }
+
+    &__content {
+      @include respond(md) {
+        padding-right: $space-lg;
+      }
+    }
+
+    &__title {
+      font-family: $font-heading;
+      font-size: $fs-xl;
+      font-weight: 700;
+      color: $color-white;
+      margin-bottom: $space-sm;
+
+      @include respond(md) {
+        font-size: $fs-2xl;
+      }
+    }
+
+    &__text {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      line-height: 1.7;
+      color: rgba($color-white, 0.9);
+      margin-bottom: $space-sm;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    &__image {
+      border-radius: $radius-lg;
+      overflow: hidden;
+      box-shadow: $shadow-xl;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+
+  .insurance-section {
+    background-color: $color-primary;
+    padding-block: $space-2xl;
+    border-top: 1px solid rgba($color-white, 0.1);
+
+    @include respond(lg) {
+      padding-block: $space-3xl;
+    }
+
+    &__inner {
+      @include container;
+    }
+  }
+
+  .insurance-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+
+    @include respond(md) {
+      grid-template-columns: 1fr 1fr;
+      gap: $space-2xl;
+      align-items: center;
+    }
+
+    &__title {
+      font-family: $font-heading;
+      font-size: $fs-xl;
+      font-weight: 700;
+      color: $color-white;
+      margin-bottom: $space-sm;
+
+      @include respond(md) {
+        font-size: $fs-2xl;
+      }
+    }
+
+    &__text {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      line-height: 1.7;
+      color: rgba($color-white, 0.9);
+      margin-bottom: $space-sm;
+    }
+
+    &__link {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-xs;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      font-weight: 600;
+      color: $color-white;
+      margin-top: $space-sm;
+      transition: gap $transition-base;
+
+      &:hover {
+        gap: $space-sm;
+      }
+
+      svg {
+        transition: transform $transition-base;
+      }
+
+      &:hover svg {
+        transform: translateX(3px);
+      }
+    }
+
+    &__image {
+      border-radius: $radius-lg;
+      overflow: hidden;
+      box-shadow: $shadow-xl;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, rgba($color-primary-dark, 0.52), rgba($color-primary, 0.88)), url('/images/waves.png') center / cover no-repeat;
+    padding-block: $space-2xl;
+    text-align: center;
+    position: relative;
+
+    @include respond(lg) {
+      padding-block: $space-3xl;
+    }
+
+    &__inner {
+      @include container;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__heading {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-white;
+      margin-bottom: $space-xs;
+
+      @include respond(md) {
+        font-size: $fs-3xl;
+      }
+    }
+
+    &__text {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: rgba($color-white, 0.85);
+      margin-bottom: $space-lg;
+
+      @include respond(md) {
+        font-size: $fs-base;
+      }
+    }
+
+    &__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: $space-sm $space-xl;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      font-weight: 600;
+      color: $color-primary;
+      background-color: $color-white;
+      border-radius: $radius-sm;
+      transition: all $transition-base;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+</style>

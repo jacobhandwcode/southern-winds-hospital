@@ -24,17 +24,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="hero__trust">
           <div class="hero__trust-badges">
             <div class="hero__badge-item" title="Joint Commission Accredited">
-              <img src="/images/gold.svg" />
+              <img src="/images/gold.svg" alt="" />
             </div>
             <div class="hero__badge-item" title="CARF Accredited">
-              <img src="/images/bars.svg" />
+              <img src="/images/bars.svg" alt="" />
             </div>
             <div class="hero__badge-item" title="HIPAA Compliant">
-              <img src="/images/family.svg" />
+              <img src="/images/family.svg" alt="" />
             </div>
           </div>
           <span class="hero__trust-text">Nationally Accredited &amp; HIPAA Compliant</span>
-		  <img src="/images/hipaa.svg" style="width: 75px" />
+          <img src="/images/hipaa.svg" alt="HIPAA Compliant" class="hero__hipaa" />
         </div>
       </div>
       <div class="hero__visual">
@@ -62,21 +62,21 @@ import Layout from '../layouts/Layout.astro';
       <div class="values__grid">
         <article class="values__card">
           <div class="values__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
           </div>
           <h3 class="values__title">Our Mission</h3>
           <p class="values__text">To provide compassionate, high-quality mental health care that empowers patients toward lasting recovery and a fulfilling life.</p>
         </article>
         <article class="values__card">
           <div class="values__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
           <h3 class="values__title">Vision</h3>
           <p class="values__text">To be the leading psychiatric hospital in South Florida, recognized for clinical excellence, innovation, and patient-centered care that transforms lives.</p>
         </article>
         <article class="values__card">
           <div class="values__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3 class="values__title">Policy</h3>
           <p class="values__text">We uphold the highest standards of patient safety, confidentiality, and ethical practice across every program and interaction.</p>
@@ -197,18 +197,18 @@ import Layout from '../layouts/Layout.astro';
       @include container;
       display: grid;
       grid-template-columns: 1fr;
-      gap: $space-lg;
-      padding-top: $space-xl;
-      padding-bottom: $space-xl;
+      gap: $space-md;
+      padding-top: $space-lg;
+      padding-bottom: $space-lg;
       position: relative;
       z-index: 2;
 
       @include respond(lg) {
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        gap: $space-2xl;
-        padding-top: $space-2xl;
-        padding-bottom: $space-2xl;
+        gap: $space-xl;
+        padding-top: $space-xl;
+        padding-bottom: $space-xl;
       }
     }
 
@@ -235,19 +235,36 @@ import Layout from '../layouts/Layout.astro';
 
     &__badge {
       display: inline-block;
-      padding: $space-sm $space-md;
+      padding: $space-xs $space-sm;
       font-family: $font-body;
       font-size: $fs-xs;
       font-weight: 600;
       color: $color-primary;
       background-color: rgba($color-primary, 0.08);
       border-radius: $radius-full;
-      letter-spacing: 0.03em;
-      margin-bottom: $space-md;
+      letter-spacing: 0.02em;
+      margin-bottom: $space-sm;
     }
 
     &__heading {
       @include heading-xl;
+      margin-bottom: $space-sm;
+
+      @include respond(lg) {
+        margin-bottom: $space-md;
+      }
+    }
+
+    &__text {
+      @include body-text;
+      max-width: 520px;
+      margin-bottom: $space-md;
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space-sm;
       margin-bottom: $space-md;
 
       @include respond(lg) {
@@ -255,59 +272,43 @@ import Layout from '../layouts/Layout.astro';
       }
     }
 
-    &__text {
-      @include body-text;
-      max-width: 520px;
-      margin-bottom: $space-lg;
-    }
-
-    &__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $space-md;
-      margin-bottom: $space-lg;
-
-      @include respond(lg) {
-        margin-bottom: $space-xl;
-      }
-    }
-
     &__cta-primary {
       @include btn-primary;
-      padding: $space-md $space-2xl;
-      font-size: $fs-base;
+      padding: $space-sm $space-lg;
+      font-size: $fs-sm;
     }
 
     &__cta-secondary {
       @include btn-outline;
-      padding: $space-md $space-2xl;
-      font-size: $fs-base;
+      padding: $space-sm $space-lg;
+      font-size: $fs-sm;
     }
 
     &__trust {
       display: flex;
       align-items: center;
-      gap: $space-md;
+      gap: $space-sm;
+      flex-wrap: wrap;
     }
 
     &__trust-badges {
       display: flex;
-      gap: $space-sm;
+      gap: $space-xs;
     }
 
     &__badge-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       background: linear-gradient(135deg, rgba($color-primary, 0.08), rgba($color-primary, 0.15));
       border-radius: 50%;
       color: $color-primary;
 
       img {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         object-fit: contain;
       }
     }
@@ -320,18 +321,23 @@ import Layout from '../layouts/Layout.astro';
       letter-spacing: 0.01em;
     }
 
+    &__hipaa {
+      width: 64px;
+      height: auto;
+    }
+
     &__visual {
       position: relative;
       z-index: 3;
     }
 
     &__image-wrapper {
-      border-radius: $radius-xl;
+      border-radius: $radius-lg;
       overflow: hidden;
       box-shadow: $shadow-xl;
 
       @include respond(lg) {
-        border-radius: $radius-xl $radius-xl $radius-xl 60px;
+        border-radius: $radius-lg $radius-lg $radius-lg 48px;
       }
 
       img {
@@ -342,52 +348,61 @@ import Layout from '../layouts/Layout.astro';
 
         @include respond(lg) {
           aspect-ratio: auto;
-          min-height: 480px;
+          min-height: 420px;
         }
       }
     }
 
     &__stat {
       position: absolute;
-      bottom: -16px;
-      left: -16px;
+      bottom: -12px;
+      left: -12px;
       display: flex;
       align-items: center;
-      gap: $space-sm;
-      padding: $space-sm $space-md;
+      gap: $space-xs;
+      padding: $space-xs $space-sm;
       background-color: $color-white;
-      border-radius: $radius-lg;
+      border-radius: $radius-md;
       box-shadow: $shadow-lg;
 
       @include respond(lg) {
-        bottom: 32px;
-        left: -40px;
+        bottom: 24px;
+        left: -32px;
+        padding: $space-sm $space-md;
       }
     }
 
     &__stat-number {
       font-family: $font-heading;
-      font-size: $fs-3xl;
+      font-size: $fs-2xl;
       font-weight: 800;
       color: $color-primary;
       line-height: 1;
+
+      @include respond(lg) {
+        font-size: $fs-3xl;
+      }
     }
 
     &__stat-label {
       font-family: $font-body;
-      font-size: $fs-xs;
+      font-size: 0.65rem;
       font-weight: 500;
       color: $color-gray-500;
-      line-height: 1.3;
+      line-height: 1.2;
+
+      @include respond(lg) {
+        font-size: $fs-xs;
+      }
     }
   }
 
   .values {
     background-color: $color-offwhite;
-    padding-block: $space-2xl;
+    padding-block: $space-xl;
 
     @include respond(lg) {
-      padding-block: $space-3xl;
+      padding-block: $space-2xl;
     }
 
     &__inner {
@@ -397,18 +412,18 @@ import Layout from '../layouts/Layout.astro';
     &__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: $space-md;
+      gap: $space-sm;
 
       @include respond(md) {
         grid-template-columns: repeat(3, 1fr);
-        gap: $space-lg;
+        gap: $space-md;
       }
     }
 
     &__card {
       background-color: $color-white;
-      padding: $space-lg;
-      border-radius: $radius-lg;
+      padding: $space-md;
+      border-radius: $radius-md;
       text-align: center;
       border: 1px solid $color-border;
       transition: all $transition-base;
@@ -416,7 +431,7 @@ import Layout from '../layouts/Layout.astro';
       &:hover {
         border-color: transparent;
         box-shadow: $shadow-lg;
-        transform: translateY(-4px);
+        transform: translateY(-3px);
       }
     }
 
@@ -424,17 +439,17 @@ import Layout from '../layouts/Layout.astro';
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       background: linear-gradient(135deg, rgba($color-primary, 0.08), rgba($color-primary, 0.15));
       border-radius: 50%;
       color: $color-primary;
-      margin-bottom: $space-sm;
+      margin-bottom: $space-xs;
     }
 
     &__title {
       font-family: $font-heading;
-      font-size: $fs-xl;
+      font-size: $fs-lg;
       font-weight: 700;
       color: $color-navy;
       margin-bottom: $space-xs;
@@ -443,17 +458,17 @@ import Layout from '../layouts/Layout.astro';
     &__text {
       font-family: $font-body;
       font-size: $fs-sm;
-      line-height: 1.7;
+      line-height: 1.6;
       color: $color-text-muted;
     }
   }
 
   .programs {
-    padding-block: $space-2xl;
+    padding-block: $space-xl;
     background-color: $color-white;
 
     @include respond(lg) {
-      padding-block: $space-3xl;
+      padding-block: $space-2xl;
     }
 
     &__inner {
@@ -462,10 +477,10 @@ import Layout from '../layouts/Layout.astro';
 
     &__header {
       text-align: center;
-      margin-bottom: $space-xl;
+      margin-bottom: $space-lg;
 
       @include respond(lg) {
-        margin-bottom: $space-2xl;
+        margin-bottom: $space-xl;
       }
     }
 
@@ -475,30 +490,31 @@ import Layout from '../layouts/Layout.astro';
       font-size: $fs-xs;
       font-weight: 700;
       color: $color-primary;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: $space-sm;
+      margin-bottom: $space-xs;
     }
 
     &__heading {
       @include heading-lg;
-      margin-bottom: $space-sm;
+      margin-bottom: $space-xs;
     }
 
     &__subtext {
       @include body-text;
-      max-width: 560px;
+      max-width: 540px;
       margin-inline: auto;
+      font-size: $fs-sm;
     }
 
     &__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: $space-md;
+      gap: $space-sm;
 
       @include respond(md) {
         grid-template-columns: repeat(3, 1fr);
-        gap: $space-lg;
+        gap: $space-md;
       }
     }
 
@@ -525,15 +541,19 @@ import Layout from '../layouts/Layout.astro';
     }
 
     &__card-body {
-      padding: $space-md;
+      padding: $space-sm;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+
+      @include respond(md) {
+        padding: $space-md;
+      }
     }
 
     &__card-title {
       font-family: $font-heading;
-      font-size: $fs-xl;
+      font-size: $fs-lg;
       font-weight: 700;
       color: $color-navy;
       margin-bottom: $space-xs;
@@ -542,16 +562,16 @@ import Layout from '../layouts/Layout.astro';
     &__card-text {
       font-family: $font-body;
       font-size: $fs-sm;
-      line-height: 1.7;
+      line-height: 1.6;
       color: $color-text-muted;
-      margin-bottom: $space-md;
+      margin-bottom: $space-sm;
       flex-grow: 1;
     }
 
     &__card-link {
       display: inline-flex;
       align-items: center;
-      gap: $space-sm;
+      gap: $space-xs;
       font-family: $font-body;
       font-size: $fs-sm;
       font-weight: 600;
@@ -559,7 +579,7 @@ import Layout from '../layouts/Layout.astro';
       transition: gap $transition-base;
 
       &:hover {
-        gap: $space-md;
+        gap: $space-sm;
       }
 
       svg {
@@ -567,18 +587,18 @@ import Layout from '../layouts/Layout.astro';
       }
 
       &:hover svg {
-        transform: translateX(4px);
+        transform: translateX(3px);
       }
     }
   }
 
   .insurance {
     background-color: $color-offwhite;
-    padding-block: $space-2xl;
+    padding-block: $space-xl;
     overflow: hidden;
 
     @include respond(lg) {
-      padding-block: $space-3xl;
+      padding-block: $space-2xl;
     }
 
     &__inner {
@@ -591,30 +611,35 @@ import Layout from '../layouts/Layout.astro';
       font-size: $fs-xs;
       font-weight: 700;
       color: $color-primary;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: $space-sm;
+      margin-bottom: $space-xs;
     }
 
     &__heading {
       @include heading-lg;
-      margin-bottom: $space-xl;
-      padding-inline: $space-lg;
+      margin-bottom: $space-lg;
+      padding-inline: $space-md;
+      font-size: $fs-xl;
+
+      @include respond(md) {
+        font-size: $fs-2xl;
+      }
     }
 
     &__carousel {
       width: 100%;
       overflow: hidden;
-      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      margin-bottom: $space-lg;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      margin-bottom: $space-md;
     }
 
     &__track {
       display: flex;
-      gap: $space-3xl;
+      gap: $space-2xl;
       width: max-content;
-      animation: scroll 25s linear infinite;
+      animation: scroll 20s linear infinite;
 
       &:hover {
         animation-play-state: paused;
@@ -626,16 +651,16 @@ import Layout from '../layouts/Layout.astro';
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 60px;
+      height: 48px;
 
       img {
         height: 100%;
         width: auto;
-        max-width: 160px;
+        max-width: 140px;
         object-fit: contain;
-        opacity: 0.7;
+        opacity: 0.85;
         transition: opacity $transition-base;
-        filter: grayscale(30%);
+        filter: grayscale(20%);
       }
 
       &:hover img {
@@ -648,14 +673,14 @@ import Layout from '../layouts/Layout.astro';
       font-family: $font-body;
       font-size: $fs-sm;
       color: $color-text-muted;
-      padding-inline: $space-lg;
+      padding-inline: $space-md;
     }
 
     &__note-link {
       color: $color-primary;
       font-weight: 600;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 2px;
       transition: color $transition-fast;
 
       &:hover {

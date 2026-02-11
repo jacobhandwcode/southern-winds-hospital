@@ -1,23 +1,29 @@
 ---
+interface Props {
+  hideCta?: boolean;
+}
 
+const { hideCta = false } = Astro.props;
 ---
 
 <footer class="site-footer">
-  <div class="footer-cta">
-    <div class="footer-cta__inner">
-      <div class="footer-cta__content">
-        <h2 class="footer-cta__heading">Take the First Step Toward a New Life</h2>
-        <p class="footer-cta__text">Our admissions team is available 24/7 to answer your questions and guide you through the process.</p>
-      </div>
-      <div class="footer-cta__actions">
-        <a href="tel:7868267552" class="footer-cta__phone">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          (786) 826-7552
-        </a>
-        <a href="/contact" class="footer-cta__btn">Contact Us</a>
+  {!hideCta && (
+    <div class="footer-cta">
+      <div class="footer-cta__inner">
+        <div class="footer-cta__content">
+          <h2 class="footer-cta__heading">Take the First Step Toward a New Life</h2>
+          <p class="footer-cta__text">Our admissions team is available 24/7 to answer your questions and guide you through the process.</p>
+        </div>
+        <div class="footer-cta__actions">
+          <a href="tel:7868267552" class="footer-cta__phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            (786) 826-7552
+          </a>
+          <a href="/contact" class="footer-cta__btn">Contact Us</a>
+        </div>
       </div>
     </div>
-  </div>
+  )}
 
   <div class="footer-main">
     <div class="footer-main__inner">
@@ -100,12 +106,9 @@
     &::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba($color-white, 0.06) 0%, transparent 70%);
-      border-radius: 50%;
+      inset: 0;
+      background: linear-gradient(135deg, rgba($color-primary-dark, 0.92) 0%, rgba($color-primary, 0.88) 50%, rgba($color-primary-light, 0.9) 100%);
+      z-index: 1;
     }
 
     &__inner {
@@ -113,17 +116,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: $space-xl;
-      padding-block: $space-3xl;
+      gap: $space-lg;
+      padding-block: $space-2xl;
       text-align: center;
       position: relative;
-      background: #0d5c9984;
+      z-index: 2;
 
       @include respond(lg) {
         flex-direction: row;
         justify-content: space-between;
         text-align: left;
-        padding-block: $space-4xl;
+        padding-block: $space-3xl;
       }
     }
 
