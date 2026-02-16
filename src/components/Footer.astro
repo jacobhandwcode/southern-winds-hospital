@@ -4,6 +4,12 @@ interface Props {
 }
 
 const { hideCta = false } = Astro.props;
+
+const phoneLines = [
+  { label: 'Admissions', number: '(786) 826-7552', href: 'tel:7868267552' },
+  { label: 'Medical', number: '(786) 826-7553', href: 'tel:7868267553' },
+  { label: 'Sales', number: '(786) 826-7554', href: 'tel:7868267554' },
+];
 ---
 
 <footer class="site-footer">
@@ -15,10 +21,24 @@ const { hideCta = false } = Astro.props;
           <p class="footer-cta__text">Our admissions team is available 24/7 to answer your questions and guide you through the process.</p>
         </div>
         <div class="footer-cta__actions">
-          <a href="tel:7868267552" class="footer-cta__phone">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            (786) 826-7552
-          </a>
+          <div class="footer-cta__phone-switcher" data-phone-switcher>
+            <div class="footer-cta__tabs" role="tablist">
+              {phoneLines.map((line, i) => (
+                <button
+                  class={`footer-cta__tab ${i === 0 ? 'is-active' : ''}`}
+                  role="tab"
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                  data-index={i}
+                >
+                  {line.label}
+                </button>
+              ))}
+            </div>
+            <a href={phoneLines[0].href} class="footer-cta__phone" data-phone-link>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span data-phone-number>{phoneLines[0].number}</span>
+            </a>
+          </div>
           <a href="/contact" class="footer-cta__btn">Contact Us</a>
         </div>
       </div>
@@ -72,10 +92,20 @@ const { hideCta = false } = Astro.props;
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               web@southernwindshospital.com
             </a>
-            <a href="tel:7868267552" class="footer-contact__item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              786-826-7552
-            </a>
+            <div class="footer-contact__phones">
+              <a href="tel:7868267552" class="footer-contact__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Admissions: 786-826-7552</span>
+              </a>
+              <a href="tel:7868267553" class="footer-contact__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Medical: 786-826-7553</span>
+              </a>
+              <a href="tel:7868267554" class="footer-contact__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Sales: 786-826-7554</span>
+              </a>
+            </div>
             <span class="footer-contact__item">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               4225 W 20th Ave, Hialeah FL 33012
@@ -93,6 +123,31 @@ const { hideCta = false } = Astro.props;
     </div>
   </div>
 </footer>
+
+<script define:vars={{ phoneLines }}>
+  document.querySelectorAll('[data-phone-switcher]').forEach((switcher) => {
+    const tabs = switcher.querySelectorAll('[role="tab"]');
+    const phoneLink = switcher.querySelector('[data-phone-link]');
+    const phoneNumber = switcher.querySelector('[data-phone-number]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const index = parseInt(tab.dataset.index);
+        const line = phoneLines[index];
+
+        tabs.forEach((t) => {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+
+        phoneLink.href = line.href;
+        phoneNumber.textContent = line.number;
+      });
+    });
+  });
+</script>
 
 <style lang="scss">
   @use '../styles/partials/variables' as *;
@@ -158,10 +213,57 @@ const { hideCta = false } = Astro.props;
       flex-direction: column;
       gap: $space-md;
       flex-shrink: 0;
+      align-items: center;
 
-      @include respond(sm) {
-        flex-direction: row;
-        align-items: center;
+      @include respond(lg) {
+        align-items: flex-end;
+      }
+    }
+
+    &__phone-switcher {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-sm;
+
+      @include respond(lg) {
+        align-items: flex-end;
+      }
+    }
+
+    &__tabs {
+      display: flex;
+      background: rgba($color-white, 0.12);
+      border-radius: 100px;
+      padding: 3px;
+    }
+
+    &__tab {
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      margin: 0;
+      padding: 6px $space-md;
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 600;
+      line-height: 1.4;
+      color: rgba($color-white, 0.65);
+      background: transparent;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      &:hover {
+        color: $color-white;
+      }
+
+      &.is-active {
+        background: $color-white;
+        color: $color-primary-dark;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -347,6 +449,12 @@ const { hideCta = false } = Astro.props;
     flex-direction: column;
     gap: $space-md;
     font-style: normal;
+
+    &__phones {
+      display: flex;
+      flex-direction: column;
+      gap: $space-sm;
+    }
 
     &__item {
       display: flex;
