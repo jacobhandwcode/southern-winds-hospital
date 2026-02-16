@@ -14,10 +14,6 @@
 
   <nav class="nav" aria-label="Main navigation">
     <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="Southern Winds Hospital — Home">
-        <img src="/images/logo.svg" style="width: 100px" />
-      </a>
-
       <button
         class="nav__toggle"
         aria-label="Toggle navigation menu"
@@ -30,7 +26,7 @@
       </button>
 
       <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list" role="list">
+        <ul class="nav__list nav__list--left" role="list">
           <li class="nav__item">
             <a href="/" class="nav__link" aria-current="page">Home</a>
           </li>
@@ -43,6 +39,13 @@
           <li class="nav__item">
             <a href="/admissions" class="nav__link">Admissions</a>
           </li>
+        </ul>
+
+        <a href="/" class="nav__logo nav__logo--desktop" aria-label="Southern Winds Hospital — Home">
+          <img src="/images/logo.svg" style="width: 150px" />
+        </a>
+
+        <ul class="nav__list nav__list--right" role="list">
           <li class="nav__item">
             <a href="/what-we-treat" class="nav__link">What We Treat</a>
           </li>
@@ -52,9 +55,15 @@
           <li class="nav__item">
             <a href="/careers" class="nav__link">Careers</a>
           </li>
+          <li class="nav__item">
+            <a href="/contact" class="nav__cta">Contact Us</a>
+          </li>
         </ul>
-        <a href="/contact" class="nav__cta">Contact Us</a>
       </div>
+
+      <a href="/" class="nav__logo nav__logo--mobile" aria-label="Southern Winds Hospital — Home">
+        <img src="/images/logo.svg" style="width: 100px" />
+      </a>
     </div>
   </nav>
 </header>
@@ -119,56 +128,32 @@
 
       @include respond(lg) {
         height: 80px;
+        justify-content: center;
       }
     }
 
     &__logo {
       display: flex;
       align-items: center;
-      gap: $space-sm;
       text-decoration: none;
       flex-shrink: 0;
-    }
 
-    &__logo-mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, $color-primary, $color-primary-dark);
-      color: $color-white;
-      font-family: $font-heading;
-      font-size: $fs-lg;
-      font-weight: 700;
-      border-radius: $radius-md;
-      letter-spacing: -0.02em;
-    }
+      &--desktop {
+        display: none;
 
-    &__logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    &__logo-name {
-      font-family: $font-heading;
-      font-size: $fs-md;
-      font-weight: 700;
-      color: $color-navy;
-
-      @include respond(md) {
-        font-size: $fs-lg;
+        @include respond(lg) {
+          display: flex;
+          margin: 0 $space-lg;
+        }
       }
-    }
 
-    &__logo-tagline {
-      font-family: $font-body;
-      font-size: $fs-xs;
-      font-weight: 500;
-      color: $color-primary;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      &--mobile {
+        display: flex;
+
+        @include respond(lg) {
+          display: none;
+        }
+      }
     }
 
     &__toggle {
@@ -213,11 +198,12 @@
         display: flex;
         position: static;
         align-items: center;
-        gap: $space-sm;
         background: none;
         border: none;
         padding: 0;
         box-shadow: none;
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -230,6 +216,19 @@
         flex-direction: row;
         align-items: center;
         gap: 0;
+        flex: 1;
+      }
+
+      &--left {
+        @include respond(lg) {
+          justify-content: flex-end;
+        }
+      }
+
+      &--right {
+        @include respond(lg) {
+          justify-content: flex-start;
+        }
       }
     }
 
@@ -243,6 +242,7 @@
       letter-spacing: 0.01em;
       border-radius: $radius-sm;
       transition: all $transition-fast;
+      white-space: nowrap;
 
       &:hover,
       &[aria-current="page"] {
@@ -262,7 +262,7 @@
 
       @include respond(lg) {
         margin-top: 0;
-        margin-left: $space-md;
+        margin-left: $space-sm;
       }
     }
   }

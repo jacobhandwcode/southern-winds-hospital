@@ -1,0 +1,816 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const teamMembers = [
+  { name: 'Dr. Alejandro Reyes', role: 'Chief Medical Officer', department: 'Administration', email: 'areyes@southernwinds.com', phone: '(305) 558-9701', image: '/images/team/areyes.jpg' },
+  { name: 'Dr. Ana M. Delgado', role: 'Psychiatrist', department: 'Behavioral Health', email: 'adelgado@southernwinds.com', phone: '(305) 558-9702', image: '/images/team/adelgado.jpg' },
+  { name: 'Dr. Brian K. Thompson', role: 'Neurologist', department: 'Neurology', email: 'bthompson@southernwinds.com', phone: '(305) 558-9703', image: '/images/team/bthompson.jpg' },
+  { name: 'Dr. Carmen L. Fuentes', role: 'Cardiologist', department: 'Cardiology', email: 'cfuentes@southernwinds.com', phone: '(305) 558-9704', image: '/images/team/cfuentes.jpg' },
+  { name: 'Dr. David Chen', role: 'Orthopedic Surgeon', department: 'Orthopedics', email: 'dchen@southernwinds.com', phone: '(305) 558-9705', image: '/images/team/dchen.jpg' },
+  { name: 'Dr. Elena Vasquez', role: 'Pediatrician', department: 'Pediatrics', email: 'evasquez@southernwinds.com', phone: '(305) 558-9706', image: '/images/team/evasquez.jpg' },
+  { name: 'Dr. Fernando J. Ruiz', role: 'General Surgeon', department: 'Surgery', email: 'fruiz@southernwinds.com', phone: '(305) 558-9707', image: '/images/team/fruiz.jpg' },
+  { name: 'Dr. Gloria M. Pacheco', role: 'Internist', department: 'Internal Medicine', email: 'gpacheco@southernwinds.com', phone: '(305) 558-9708', image: '/images/team/gpacheco.jpg' },
+  { name: 'Dr. Henry L. Brooks', role: 'Anesthesiologist', department: 'Anesthesiology', email: 'hbrooks@southernwinds.com', phone: '(305) 558-9709', image: '/images/team/hbrooks.jpg' },
+  { name: 'Dr. Isabel Torres', role: 'Dermatologist', department: 'Dermatology', email: 'itorres@southernwinds.com', phone: '(305) 558-9710', image: '/images/team/itorres.jpg' },
+  { name: 'Dr. James R. Morton', role: 'Radiologist', department: 'Radiology', email: 'jmorton@southernwinds.com', phone: '(305) 558-9711', image: '/images/team/jmorton.jpg' },
+  { name: 'Dr. Karen S. Liu', role: 'Emergency Medicine', department: 'Emergency', email: 'kliu@southernwinds.com', phone: '(305) 558-9712', image: '/images/team/kliu.jpg' },
+];
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+---
+
+<Layout title="Our Team — Southern Winds Hospital" hideFooterCta>
+
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="/images/admissions-hero.png" alt="" loading="eager" />
+    </div>
+    <div class="page-hero__diagonal"></div>
+    <div class="page-hero__curve"></div>
+    <div class="page-hero__inner">
+      <div class="page-hero__content">
+        <h1 class="page-hero__heading">Our Team</h1>
+        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span aria-current="page">Our Team</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-search">
+    <div class="team-search__inner">
+      <div class="team-search__bar">
+        <div class="team-search__input-group">
+          <input type="text" class="team-search__input" placeholder="Search Professionals By Name" id="searchInput" />
+          <button class="team-search__btn" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <div class="team-search__radios">
+          <label class="team-search__radio">
+            <input type="radio" name="searchType" value="name" checked />
+            <span>Search By Name</span>
+          </label>
+          <label class="team-search__radio">
+            <input type="radio" name="searchType" value="keyword" />
+            <span>Search By Keyword</span>
+          </label>
+        </div>
+      </div>
+      <div class="team-search__filters">
+        <span class="team-search__filter-label">Filter By:</span>
+        <button class="team-search__filter-btn">Department <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="team-search__filter-btn">Specialty <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="team-search__filter-btn">Language <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="alpha-nav">
+    <div class="alpha-nav__inner">
+      {alphabet.map(letter => (
+        <button class="alpha-nav__letter" data-letter={letter}>{letter}</button>
+      ))}
+    </div>
+  </section>
+
+  <section class="results-bar">
+    <div class="results-bar__inner">
+      <div class="results-bar__count">
+        <span class="results-bar__label">Results</span>
+        <span class="results-bar__line"></span>
+        <span class="results-bar__number" id="resultsCount">{teamMembers.length}</span>
+      </div>
+      <div class="results-bar__criteria">
+        <span class="results-bar__criteria-label">SEARCH CRITERIA:</span>
+        <span class="results-bar__tag">All <button class="results-bar__tag-remove" aria-label="Remove filter">&times;</button></span>
+      </div>
+      <div class="results-bar__sort">
+        <span class="results-bar__sort-label">SORT BY:</span>
+        <button class="results-bar__sort-btn results-bar__sort-btn--active">Position</button>
+        <span class="results-bar__sort-divider">|</span>
+        <button class="results-bar__sort-btn">Alphabetical</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-list">
+    {teamMembers.map(member => (
+      <div class="team-card">
+        <div class="team-card__inner">
+          <div class="team-card__photo">
+            <div class="team-card__photo-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="team-card__info">
+            <h3 class="team-card__name">{member.name}</h3>
+            <p class="team-card__role">{member.role}</p>
+            <a href={`mailto:${member.email}`} class="team-card__email">{member.email}</a>
+            <a href={`tel:${member.phone.replace(/\D/g, '')}`} class="team-card__phone">{member.phone}</a>
+          </div>
+          <div class="team-card__meta">
+            <span class="team-card__department">{member.department}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-section__inner">
+      <h2 class="cta-section__heading">Join Our Team</h2>
+      <p class="cta-section__text">We're always looking for dedicated professionals to join our mission of providing compassionate care.</p>
+      <a href="/careers" class="cta-section__btn">View Careers</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style lang="scss">
+  @use '../styles/partials/variables' as *;
+  @use '../styles/partials/mixins' as *;
+
+  .page-hero {
+    position: relative;
+    min-height: 220px;
+    overflow: hidden;
+
+    @include respond(md) {
+      min-height: 300px;
+    }
+
+    &__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba($color-primary, 0.75);
+      }
+    }
+
+    &__diagonal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+      z-index: 2;
+
+      @include respond(md) {
+        width: 50%;
+        clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+      }
+    }
+
+    &__curve {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: $color-white;
+      z-index: 4;
+      clip-path: ellipse(45% 100% at 50% 100%);
+
+      @include respond(md) {
+        height: 70px;
+        clip-path: ellipse(45% 100% at 50% 100%);
+      }
+    }
+
+    &__inner {
+      @include container;
+      padding-block: $space-2xl;
+      position: relative;
+      z-index: 3;
+
+      @include respond(lg) {
+        padding-block: $space-3xl;
+      }
+    }
+
+    &__content {
+      max-width: 400px;
+    }
+
+    &__heading {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-white;
+      margin-bottom: $space-xs;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 48px;
+        height: 3px;
+        background-color: $color-white;
+        margin-top: $space-xs;
+      }
+
+      @include respond(md) {
+        font-size: $fs-3xl;
+      }
+    }
+
+    &__breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: rgba($color-white, 0.85);
+      margin-top: $space-xs;
+
+      a {
+        color: rgba($color-white, 0.85);
+        transition: color $transition-fast;
+
+        &:hover {
+          color: $color-white;
+        }
+      }
+
+      span[aria-current] {
+        color: $color-white;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .team-search {
+    background: $color-white;
+    padding-block: $space-lg $space-md;
+    border-bottom: 1px solid $color-border;
+
+    &__inner {
+      @include container;
+      display: flex;
+      flex-direction: column;
+      gap: $space-md;
+
+      @include respond(lg) {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+    }
+
+    &__bar {
+      flex: 1;
+      max-width: 560px;
+    }
+
+    &__input-group {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid $color-border;
+      padding-bottom: $space-xs;
+      margin-bottom: $space-sm;
+      transition: border-color $transition-fast;
+
+      &:focus-within {
+        border-color: $color-primary;
+      }
+    }
+
+    &__input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: $font-body;
+      font-size: $fs-base;
+      color: $color-navy;
+      padding: $space-xs 0;
+
+      &::placeholder {
+        color: $color-text-muted;
+        font-weight: 400;
+      }
+
+      @include respond(md) {
+        font-size: $fs-lg;
+      }
+    }
+
+    &__btn {
+      background: none;
+      border: none;
+      color: $color-text-muted;
+      cursor: pointer;
+      padding: $space-xs;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &__radios {
+      display: flex;
+      gap: $space-md;
+    }
+
+    &__radio {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+      cursor: pointer;
+      font-family: $font-body;
+      font-size: $fs-xs;
+      color: $color-text-muted;
+
+      input[type="radio"] {
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border: 2px solid $color-border;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+
+        &:checked {
+          border-color: $color-primary;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 6px;
+            height: 6px;
+            background: $color-primary;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+
+    &__filters {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+      flex-wrap: wrap;
+    }
+
+    &__filter-label {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      font-weight: 500;
+      color: $color-navy;
+    }
+
+    &__filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: $color-text-muted;
+      cursor: pointer;
+      padding: $space-xs $space-sm;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .alpha-nav {
+    background: $color-offwhite;
+    padding-block: $space-md;
+    border-bottom: 1px solid $color-border;
+
+    &__inner {
+      @include container;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+
+      @include respond(md) {
+        gap: $space-xs;
+      }
+    }
+
+    &__letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      font-family: $font-heading;
+      font-size: $fs-sm;
+      font-weight: 600;
+      color: $color-navy;
+      cursor: pointer;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+
+      @include respond(md) {
+        width: 40px;
+        height: 40px;
+        font-size: $fs-base;
+      }
+
+      &:hover {
+        background: rgba($color-primary, 0.1);
+        color: $color-primary;
+      }
+
+      &--active {
+        background: $color-primary;
+        color: $color-white;
+
+        &:hover {
+          background: $color-primary-dark;
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  .results-bar {
+    background: $color-navy;
+    padding-block: $space-md;
+    border-top: 1px solid rgba($color-white, 0.08);
+
+    &__inner {
+      @include container;
+      display: flex;
+      flex-direction: column;
+      gap: $space-sm;
+
+      @include respond(md) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    &__count {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+    }
+
+    &__label {
+      font-family: $font-heading;
+      font-size: $fs-lg;
+      font-weight: 600;
+      color: $color-white;
+    }
+
+    &__line {
+      width: 40px;
+      height: 2px;
+      background: rgba($color-white, 0.25);
+    }
+
+    &__number {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-white;
+    }
+
+    &__criteria {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+    }
+
+    &__criteria-label {
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 600;
+      color: rgba($color-white, 0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    &__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-xs;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: $color-primary;
+    }
+
+    &__tag-remove {
+      background: none;
+      border: none;
+      color: $color-primary;
+      font-size: $fs-base;
+      cursor: pointer;
+      padding: 0 2px;
+      line-height: 1;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    &__sort {
+      display: flex;
+      align-items: center;
+      gap: $space-xs;
+    }
+
+    &__sort-label {
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 600;
+      color: rgba($color-white, 0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-right: $space-xs;
+    }
+
+    &__sort-btn {
+      background: none;
+      border: none;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: rgba($color-white, 0.5);
+      cursor: pointer;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-white;
+      }
+
+      &--active {
+        color: $color-primary;
+        font-weight: 600;
+      }
+    }
+
+    &__sort-divider {
+      color: rgba($color-white, 0.25);
+      font-size: $fs-sm;
+    }
+  }
+
+  .team-list {
+    background: $color-navy;
+  }
+
+  .team-card {
+    border-bottom: 1px solid rgba($color-white, 0.06);
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba($color-white, 0.03);
+    }
+
+    &__inner {
+      @include container;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $space-md;
+      padding-block: $space-lg;
+
+      @include respond(md) {
+        grid-template-columns: 140px 1fr auto;
+        align-items: center;
+        gap: $space-xl;
+      }
+
+      @include respond(lg) {
+        grid-template-columns: 160px 1fr auto;
+      }
+    }
+
+    &__photo {
+      width: 120px;
+      height: 150px;
+
+      @include respond(md) {
+        width: 140px;
+        height: 170px;
+      }
+
+      @include respond(lg) {
+        width: 160px;
+        height: 190px;
+      }
+    }
+
+    &__photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba($color-primary, 0.15), rgba($color-primary, 0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba($color-white, 0.2);
+      border-radius: $radius-sm;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__name {
+      font-family: $font-heading;
+      font-size: $fs-lg;
+      font-weight: 600;
+      color: $color-primary;
+      margin-bottom: 2px;
+
+      @include respond(md) {
+        font-size: $fs-xl;
+      }
+    }
+
+    &__role {
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 600;
+      color: rgba($color-white, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    &__email {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: $color-primary;
+      transition: color $transition-fast;
+      margin-top: $space-xs;
+
+      &:hover {
+        color: lighten($color-primary, 15%);
+        text-decoration: underline;
+      }
+    }
+
+    &__phone {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: rgba($color-white, 0.5);
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &__meta {
+      display: flex;
+      align-items: center;
+      gap: $space-sm;
+
+      @include respond(md) {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: $space-sm;
+      }
+    }
+
+    &__department {
+      display: inline-flex;
+      align-items: center;
+      padding: $space-xs $space-md;
+      font-family: $font-body;
+      font-size: $fs-xs;
+      font-weight: 600;
+      color: $color-white;
+      border: 1px solid rgba($color-primary, 0.5);
+      border-radius: $radius-sm;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, rgba($color-primary-dark, 0.52), rgba($color-primary, 0.88)), url('/images/waves.png') center / cover no-repeat;
+    padding-block: $space-2xl;
+    text-align: center;
+    position: relative;
+
+    @include respond(lg) {
+      padding-block: $space-3xl;
+    }
+
+    &__inner {
+      @include container;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__heading {
+      font-family: $font-heading;
+      font-size: $fs-2xl;
+      font-weight: 700;
+      color: $color-white;
+      margin-bottom: $space-xs;
+
+      @include respond(md) {
+        font-size: $fs-3xl;
+      }
+    }
+
+    &__text {
+      font-family: $font-body;
+      font-size: $fs-sm;
+      color: rgba($color-white, 0.85);
+      margin-bottom: $space-lg;
+
+      @include respond(md) {
+        font-size: $fs-base;
+      }
+    }
+
+    &__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: $space-sm $space-xl;
+      font-family: $font-body;
+      font-size: $fs-sm;
+      font-weight: 600;
+      color: $color-primary;
+      background-color: $color-white;
+      border-radius: $radius-sm;
+      transition: all $transition-base;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const letters = document.querySelectorAll('.alpha-nav__letter');
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+    const cards = document.querySelectorAll('.team-card');
+    const resultsCount = document.getElementById('resultsCount');
+
+    letters.forEach(letter => {
+      letter.addEventListener('click', () => {
+        letters.forEach(l => l.classList.remove('alpha-nav__letter--active'));
+        letter.classList.add('alpha-nav__letter--active');
+
+        const selected = letter.getAttribute('data-letter') || '';
+        let visible = 0;
+
+        cards.forEach(card => {
+          const name = card.querySelector('.team-card__name')?.textContent || '';
+          const lastName = name.split(' ').pop() || '';
+          const match = lastName.charAt(0).toUpperCase() === selected;
+          (card as HTMLElement).style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+
+        if (resultsCount) resultsCount.textContent = String(visible);
+      });
+    });
+
+    searchInput?.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      letters.forEach(l => l.classList.remove('alpha-nav__letter--active'));
+
+      let visible = 0;
+      cards.forEach(card => {
+        const name = (card.querySelector('.team-card__name')?.textContent || '').toLowerCase();
+        const role = (card.querySelector('.team-card__role')?.textContent || '').toLowerCase();
+        const dept = (card.querySelector('.team-card__department')?.textContent || '').toLowerCase();
+        const match = !query || name.includes(query) || role.includes(query) || dept.includes(query);
+        (card as HTMLElement).style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      if (resultsCount) resultsCount.textContent = String(visible);
+    });
+  });
+</script>
