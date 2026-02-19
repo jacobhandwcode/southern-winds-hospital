@@ -180,7 +180,6 @@ import Layout from '../layouts/Layout.astro';
       font-weight: 700;
       color: $color-white;
       margin-bottom: $space-xs;
-      position: relative;
 
       &::after {
         content: '';
@@ -221,10 +220,10 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-  .intro {
-    background-color: $color-white;
-    padding-block: $space-2xl;
-    padding-top: 0 !important;
+.intro {
+  background: $color-white;
+  padding-block: $space-2xl;
+  padding-top: $space-lg;
 
     @include respond(lg) {
       padding-block: $space-3xl;
@@ -243,7 +242,6 @@ import Layout from '../layouts/Layout.astro';
       color: $color-primary;
       margin-bottom: $space-lg;
       position: relative;
-      display: inline-block;
 
       &::after {
         content: '';
