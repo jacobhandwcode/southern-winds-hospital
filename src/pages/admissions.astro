@@ -220,40 +220,31 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-.intro {
-  background: $color-white;
-  padding-block: $space-2xl;
-  padding-top: $space-lg;
-
-    @include respond(lg) {
-      padding-block: $space-3xl;
-    }
+  .intro {
+    background: $color-white;
+    padding-block: $space-2xl;
+    padding-top: $space-lg;
 
     &__inner {
       @include container;
       max-width: 800px;
-      text-align: center;
     }
 
     &__heading {
       font-family: $font-heading;
       font-size: $fs-2xl;
       font-weight: 700;
-      color: $color-primary;
+      color: $color-navy;
+      text-align: center;
       margin-bottom: $space-lg;
-      position: relative;
 
       &::after {
         content: '';
         display: block;
-        width: 60px;
+        width: 48px;
         height: 3px;
-        background-color: $color-primary;
+        background: $color-primary;
         margin: $space-sm auto 0;
-      }
-
-      @include respond(md) {
-        font-size: $fs-3xl;
       }
     }
 
@@ -264,6 +255,7 @@ import Layout from '../layouts/Layout.astro';
         line-height: 1.8;
         color: $color-text-muted;
         margin-bottom: $space-md;
+        text-align: center;
 
         &:last-child {
           margin-bottom: 0;
@@ -272,16 +264,10 @@ import Layout from '../layouts/Layout.astro';
         @include respond(md) {
           font-size: $fs-base;
         }
-      }
 
-      a {
-        color: $color-primary;
-        font-weight: 600;
-        text-decoration: underline;
-        text-underline-offset: 2px;
-
-        &:hover {
-          color: $color-primary-dark;
+        strong {
+          color: $color-primary;
+          font-weight: 600;
         }
       }
     }
