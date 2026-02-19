@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 
   <section class="page-hero">
     <div class="page-hero__bg">
-      <img src="/images/treatment-hero.jpg" alt="" loading="eager" />
+      <img src="/images/admissions-hero.png" alt="" loading="eager" />
     </div>
     <div class="page-hero__diagonal"></div>
     <div class="page-hero__curve"></div>
@@ -45,7 +45,7 @@ import Layout from '../layouts/Layout.astro';
         <p>At Southern Winds Hospital, we know how difficult it is to deal with mental health disorders, and that is why we offer psychiatric help to different types of disorders, always focusing on the therapeutic process.</p>
       </div>
       <div class="mental-health-section__image">
-        <img src="/images/mental-health.jpg" alt="Compassionate mental health care" loading="lazy" />
+        <img src="/images/mental.jpg" alt="Compassionate mental health care" loading="lazy" />
       </div>
     </div>
   </section>
@@ -137,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="help-section">
     <div class="help-section__inner">
       <div class="help-section__image">
-        <img src="/images/how-we-help.jpg" alt="Therapy session at Southern Winds Hospital" loading="lazy" />
+        <img src="/images/therapy.jpg" alt="Therapy session at Southern Winds Hospital" loading="lazy" />
       </div>
       <div class="help-section__content">
         <h2 class="help-section__heading">How Can We Help You?</h2>
@@ -371,6 +371,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     &__inner {
+      color: $color-white;
       @include container;
       display: grid;
       grid-template-columns: 1fr;
@@ -391,6 +392,7 @@ import Layout from '../layouts/Layout.astro';
       font-size: $fs-2xl;
       font-weight: 700;
       margin-bottom: $space-md;
+      color: $color-white;
 
       @include respond(md) {
         font-size: $fs-3xl;
